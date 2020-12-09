@@ -1,16 +1,36 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms'
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
+import { CrudService } from './service/crud.service';
 
 import { AppComponent } from './app.component';
+import { FriendsComponent } from './friends/friends.component';
+import { FriendsDetailsComponent } from './friends-details/friends-details.component';
+import { AddFriendsComponent } from './add-friends/add-friends.component';
+import { EditFriendsComponent } from './edit-friends/edit-friends.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FriendsComponent,
+    FriendsDetailsComponent,
+    AddFriendsComponent,
+    EditFriendsComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFirestoreModule,
   ],
-  providers: [],
+  providers: [CrudService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
