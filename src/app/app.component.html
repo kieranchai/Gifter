@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="d-flex justify-content-center">
-        <h1>Angular 9 with Firebase CRUD</h1>
+        <h1>GIFTER</h1>
     </div>
     <div class="form-group">
         <input type="text" class="form-control" [(ngModel)]="friendName" placeholder="Enter Friend Name" />
@@ -16,11 +16,12 @@
         <input type="text" class="form-control" [(ngModel)]="friendGift" placeholder="Enter Gift Idea" />
     </div>
     <div class="form-group">
-        <button class="btn btn-primary" (click)="createRecord()"
-            [disabled]="!friendName || !friendBday || !friendGift">Create Friend</button>
+        <input type="text" class="form-control" [(ngModel)]="friendGift2"
+            placeholder="Enter Another Gift Idea (Optional)" />
     </div>
     <div class="form-group">
-        <h4><b>{{message}}</b></h4>
+        <button class="btn btn-primary" (click)="createRecord()"
+            [disabled]="!friendName || !friendBday || !friendGift">Create Friend</button>
     </div>
 
     <div class="row p-2">
@@ -39,6 +40,15 @@
                     <div class="card-text">
                         Gift: {{item.gift}}
                     </div>
+                    <div class="card-text" *ngIf="item.gift2">
+                        Gift 2: {{item.gift2}}
+                    </div>
+                    <div class="card-text" *ngIf="item.numberOfDays == 0">
+                        <b>BIRTHDAY TODAY!!!</b>
+                    </div>
+                    <div class="card-text" *ngIf="item.numberOfDays < 7 && item.numberOfDays > 0">
+                        <b>BIRTHDAY IN {{item.numberOfDays}} DAYS!!!</b>
+                    </div>
                     <span>
                         <a href="#" (click)="editRecord(item)" class="btn btn-primary btn-xs">Edit Friend</a>
                         <a href="#" (click)="deleteRecord(item.id)" class="btn btn-danger btn-xs">Delete Friend</a>
@@ -54,13 +64,17 @@
                     <div class="row">
                         <div class="form-group">
                             <div class="col-md-12">
-                                <input type="text" [(ngModel)]="item.editName" class="form-control"/>
+                                <input type="text" [(ngModel)]="item.editName" class="form-control" />
                             </div>
                             <div class="col-md-12">
-                                <input type="date" [(ngModel)]="item.editBday" class="form-control"/>
+                                <input type="date" [(ngModel)]="item.editBday" class="form-control" />
                             </div>
                             <div class="col-md-12">
-                                <input type="text" [(ngModel)]="item.editGift" class="form-control"/>
+                                <input type="text" [(ngModel)]="item.editGift" class="form-control" />
+                            </div>
+                            <div class="col-md-12">
+                                <input type="text" [(ngModel)]="item.editGift2" class="form-control"
+                                    placeholder="Enter Another Gift Idea (Optional)" />
                             </div>
                         </div>
                     </div>
