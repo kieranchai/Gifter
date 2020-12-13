@@ -10,18 +10,10 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { CrudService } from './service/crud.service';
 
 import { AppComponent } from './app.component';
-import { FriendsComponent } from './friends/friends.component';
-import { FriendsDetailsComponent } from './friends-details/friends-details.component';
-import { AddFriendsComponent } from './add-friends/add-friends.component';
-import { EditFriendsComponent } from './edit-friends/edit-friends.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    FriendsComponent,
-    FriendsDetailsComponent,
-    AddFriendsComponent,
-    EditFriendsComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
